@@ -13,7 +13,7 @@ class App extends Component{
     this.state = {
       accountBalance: 14568.27,
       currentUser: {
-        userName: 'andy_zheng',
+        userName: 'Not Logged In',
         memberSince: '08/23/99',
       },
       debitsTotal: 0,
@@ -51,6 +51,18 @@ class App extends Component{
     })
   }
 
+  addNewDebit = (name,amounts) => {
+    let joined = this.state.debits.concat([{
+      description : name,
+      amount: amounts
+    }]);
+    let newTotal = this.state.debitsTotal + parseInt(amounts);
+    this.setState({
+      debits: joined,
+      debitsTotal: newTotal
+    });
+  }
+
   componentDidMount = () =>{
     this.getDebits();
   }
@@ -59,16 +71,17 @@ class App extends Component{
     const HomeComponent = () => (<Home accountBalance={this.state.accountBalance} debits={this.state.debitsTotal}/>);
     const UserProfileComponent = () => (<UserProfile userName={this.state.currentUser.userName} memberSince={this.state.currentUser.memberSince}/>);
     const LogInComponent = () => (<Login user={this.state.currentUser} mockLogIn={this.mockLogIn} {...this.props}/>);
-    const DebitComponent = () => (<Debits debits={this.state.debits} debitsTotal = {this.state.debitsTotal}></Debits>);
-    return (
-      <Router>
-          <Switch>
-            <Route exact path = "/login" render={LogInComponent}/>
-            <Route exact path = "/" render={HomeComponent}/>
-            <Route exact path = "/userProfile" render={UserProfileComponent}/>
-            <Route exact path = '/debits' render = {DebitComponent}/>
-          </Switch>
-      </Router>
+    const DebitComponent = () => (<Debits addDebits = {this.addNewDebit} debits={this.state.debits} debitsTotal = {this.state.debitsTotal}></Debits>);
+    return (<div id = "App">
+            <Router>
+                <Switch>
+                  <Route exact path = "/login" render={LogInComponent}/>
+                  <Route exact path = "/" render={HomeComponent}/>
+                  <Route exact path = "/userProfile" render={UserProfileComponent}/>
+                  <Route exact path = '/debits' render = {DebitComponent}/>
+                </Switch>
+            </Router>
+      </div>
     );
   }
 }
