@@ -54,7 +54,8 @@ class App extends Component{
   addNewDebit = (name,amounts) => {
     let joined = this.state.debits.concat([{
       description : name,
-      amount: amounts
+      amount: amounts,
+      date : Date.now()
     }]);
     let newTotal = this.state.debitsTotal + parseInt(amounts);
     this.setState({

@@ -4,7 +4,7 @@ class DebitInput extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            name: "" ,
+            name: "Debit" ,
             amount: 0
         }
     }
