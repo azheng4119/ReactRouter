@@ -6,9 +6,10 @@ class Home extends Component{
     render(){
         return <div>
             <Link to="/userProfile">User Profile</Link><br></br>
-            <Link to="/Login">Login</Link>
-            <h1>this is the home page.</h1>
-            <AccountBalance accountBalance={this.props.accountBalance}/>
+            <Link to="/">Login</Link><br></br>
+            <Link to="/debits">Debits</Link>
+            <h1>Home page</h1>
+            <AccountBalance accountBalance={this.props.accountBalance} debits = {this.props.debits}/>
         </div>
     }
 }
