@@ -2,8 +2,9 @@ import React, {Component}  from 'react';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Home from './Components/Home';
 import UserProfile from './Components/UserProfile';
-import Login from './Components/Login';
-import axios from 'axios';
+import Login from './Components/Login'
+import Credit from './Components/Credit'
+import axios from 'axios'
 import './App.css';
 import Debits from './Components/Debits';
 
@@ -73,6 +74,8 @@ class App extends Component{
     const UserProfileComponent = () => (<UserProfile userName={this.state.currentUser.userName} memberSince={this.state.currentUser.memberSince}/>);
     const LogInComponent = () => (<Login user={this.state.currentUser} mockLogIn={this.mockLogIn} {...this.props}/>);
     const DebitComponent = () => (<Debits addDebits = {this.addNewDebit} debits={this.state.debits} debitsTotal = {this.state.debitsTotal}></Debits>);
+    let CreditInfo = () => (<Credit />)
+                            
     return (<div id = "App">
             <Router>
                 <Switch>
@@ -80,6 +83,7 @@ class App extends Component{
                   <Route exact path = "/home" render={HomeComponent}/>
                   <Route exact path = "/userProfile" render={UserProfileComponent}/>
                   <Route exact path = '/debits' render = {DebitComponent}/>
+                  <Route exact path="/credit" render={CreditInfo} />
                 </Switch>
             </Router>
       </div>
