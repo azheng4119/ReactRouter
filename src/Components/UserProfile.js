@@ -5,7 +5,7 @@ class UserProfile extends Component {
   render() {
     return (
         <div>
-            <Link to="/">Home</Link>
+            <Link to="/home">Home</Link>
             <h1>User Profile</h1>
             <div>Username: {this.props.userName}</div>
             <div>Member Since: {this.props.memberSince}</div>

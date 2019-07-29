@@ -76,8 +76,8 @@ class App extends Component{
     return (<div id = "App">
             <Router>
                 <Switch>
-                  <Route exact path = "/login" render={LogInComponent}/>
-                  <Route exact path = "/" render={HomeComponent}/>
+                  <Route exact path = "/" render={LogInComponent}/>
+                  <Route exact path = "/home" render={HomeComponent}/>
                   <Route exact path = "/userProfile" render={UserProfileComponent}/>
                   <Route exact path = '/debits' render = {DebitComponent}/>
                 </Switch>

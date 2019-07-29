@@ -12,7 +12,7 @@ class Debits extends Component{
             );
         }
         return <div>
-                <Link to="">Home</Link><br></br>
+                <Link to="/home">Home</Link><br></br>
                 <DebitInput addDebits = {this.props.addDebits}></DebitInput>
                 <span><strong>Total Debits : {this.props.debitsTotal}</strong></span>
                 <div id = "cards">{debits}</div>
