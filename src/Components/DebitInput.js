@@ -35,7 +35,7 @@ class DebitInput extends React.Component{
           </div>
           <div>
             <label >Amount</label><br></br>
-            <input type = "number" onChange = {this.handleChange2}/>
+            <input type = "number" step="0.01" onChange = {this.handleChange2}/>
           </div>
           <button>Add Debit</button>
         </form>

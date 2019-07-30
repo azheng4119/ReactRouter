@@ -40,7 +40,7 @@ class CreditInput extends Component {
                     event.preventDefault();
                     this.props.addNewCredit(this.props.id, this.state.amount, this.state.description)
                 }}>
-                    <input style={this.state.div_children} type="number" name="amount" placeholder="Enter amount" onChange={this.handlChangeAmount} />
+                    <input style={this.state.div_children} type="number" step = ".01" name="amount" placeholder="Enter amount" onChange={this.handlChangeAmount} />
                     <input style={this.state.div_children} type="text" name="description" placeholder="Enter description" onChange={this.handlChangeDescription} />
                     <button style={this.state.div_children}>Submit</button>
                 </form>

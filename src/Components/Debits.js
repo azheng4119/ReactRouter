@@ -15,6 +15,7 @@ class Debits extends Component{
             <div>
                 <Link to="/home">Home</Link><br></br>
                 <DebitInput addDebits = {this.props.addDebits}></DebitInput>
+                <span><strong>Balance : {this.props.balance}</strong></span><br></br>
                 <span><strong>Total Debits : {this.props.debitsTotal}</strong></span>
                 <div id = "cards">{debits}</div>
             </div>

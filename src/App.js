@@ -13,7 +13,7 @@ class App extends Component{
   constructor() {
     super();
     this.state = {
-      accountBalance: 14568.27,
+      accountBalance: 0,
       currentUser: {
         userName: 'Not Logged In',
         memberSince: '08/23/99',
@@ -62,18 +62,20 @@ class App extends Component{
       let date_ = new Date();
       let joined = this.state.debits.concat([{
         description : name,
-        amount: amounts,
+        amount: Number(amounts),
         date: date_.toJSON().toString()
       }]);
-      let newTotal = this.state.debitsTotal + parseInt(amounts);
+      let newTotal = this.state.debitsTotal + Number(amounts);
       this.setState({
         debits: joined,
         debitsTotal: newTotal
       });
    }
+   this.calculateTotal();
   }
 
   getCredits = () => {
+    let component = this
     fetch("https://moj-api.herokuapp.com/credits")
     .then(res => res.json())
     .then(data => this.setState({
@@ -83,6 +85,9 @@ class App extends Component{
         console.log(this.state.credits)
     })
     .then(() => this.calculateCredit())
+    .then(() => {
+      component.calculateTotal()
+    })
     .catch(err => console.log(err))
   }
 
@@ -121,6 +126,7 @@ class App extends Component{
         creditsTotal: newTotal
       });
     }
+    this.calculateTotal();
   }
 
   componentDidMount = () =>{
@@ -128,16 +134,21 @@ class App extends Component{
     this.getCredits();
   }
 
+  calculateTotal = () => {
+    this.setState({
+      accountBalance: Number(this.state.creditsTotal - this.state.debitsTotal)
+    })
+  }
   render(){
 
     const HomeComponent = () => (<Home accountBalance={this.state.accountBalance} debits={this.state.debitsTotal} credits ={this.state.creditsTotal}/>);
     const UserProfileComponent = () => (<UserProfile userName={this.state.currentUser.userName} memberSince={this.state.currentUser.memberSince}/>);
     const LogInComponent = () => (<Login user={this.state.currentUser} mockLogIn={this.mockLogIn} {...this.props}/>);
-    const DebitComponent = () => (<Debits addDebits = {this.addNewDebit} debits={this.state.debits} debitsTotal = {this.state.debitsTotal}></Debits>);
+    const DebitComponent = () => (<Debits balance = {this.state.accountBalance} addDebits = {this.addNewDebit} debits={this.state.debits} debitsTotal = {this.state.debitsTotal}></Debits>);
     let CreditInfo = () => (<Credit accountBalance={this.state.accountBalance} addNewCredit={this.addNewCredit} creditsTotal={this.state.creditsTotal} credits={this.state.credits} />)
                             
     return (<div id = "App">
-            <Router>
+            <Router basename = "ReactRouter">
                 <Switch>
                   <Route exact path = "/" render={LogInComponent}/>
                   <Route exact path = "/home" render={HomeComponent}/>
