@@ -15,8 +15,8 @@ class Debits extends Component{
             <div>
                 <Link to="/home">Home</Link><br></br>
                 <DebitInput addDebits = {this.props.addDebits}></DebitInput>
-                <span><strong>Balance : {this.props.balance}</strong></span><br></br>
-                <span><strong>Total Debits : {this.props.debitsTotal}</strong></span>
+                <span><strong>Balance : {(this.props.creditsTotal-this.props.debitsTotal).toFixed(2)}</strong></span><br></br>
+                <span><strong>Total Debits : {this.props.debitsTotal.toFixed(2)}</strong></span>
                 <div id = "cards">{debits}</div>
             </div>
         )

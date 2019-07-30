@@ -1,10 +1,10 @@
 import React, {Component}  from 'react';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import {BrowserRouter as Switch, Route} from 'react-router-dom';
 import Home from './Components/Home';
 import UserProfile from './Components/UserProfile';
 import Login from './Components/Login'
 import Credit from './Components/Credit'
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import axios from 'axios'
 import './App.css';
 import Debits from './Components/Debits';
@@ -45,6 +45,18 @@ class App extends Component{
     this.calucalteDebit();
   }
 
+  async getCredits(){
+    await axios.get('https://moj-api.herokuapp.com/credits')
+    .then(response =>{
+      let result = response.data;
+      this.setState({
+          credits : result
+      })
+    })
+    .catch(err => console.log(err));
+    await this.calculateCredit();
+  }
+
   calucalteDebit = () => {
     let total = 0;
     for (let i of this.state.debits){
@@ -74,22 +86,22 @@ class App extends Component{
    this.calculateTotal();
   }
 
-  getCredits = () => {
-    let component = this
-    fetch("https://moj-api.herokuapp.com/credits")
-    .then(res => res.json())
-    .then(data => this.setState({
-        credits: data
-    }))
-    .then(() => {
-        console.log(this.state.credits)
-    })
-    .then(() => this.calculateCredit())
-    .then(() => {
-      component.calculateTotal()
-    })
-    .catch(err => console.log(err))
-  }
+  // async getCredits(){
+  //   let component = this
+  //   await fetch("https://moj-api.herokuapp.com/credits")
+  //   .then(res => res.json())
+  //   .then(data => this.setState({
+  //       credits: data
+  //   }))
+  //   .then(() => {
+  //       console.log(this.state.credits)
+  //   })
+  //   .then(() => this.calculateCredit())
+  //   .then(() => {
+  //     component.calculateTotal()
+  //   })
+  //   .catch(err => console.log(err))
+  // }
 
   calculateCredit = () => {
     let amount = 0;
@@ -144,11 +156,11 @@ class App extends Component{
     const HomeComponent = () => (<Home accountBalance={this.state.accountBalance} debits={this.state.debitsTotal} credits ={this.state.creditsTotal}/>);
     const UserProfileComponent = () => (<UserProfile userName={this.state.currentUser.userName} memberSince={this.state.currentUser.memberSince}/>);
     const LogInComponent = () => (<Login user={this.state.currentUser} mockLogIn={this.mockLogIn} {...this.props}/>);
-    const DebitComponent = () => (<Debits balance = {this.state.accountBalance} addDebits = {this.addNewDebit} debits={this.state.debits} debitsTotal = {this.state.debitsTotal}></Debits>);
-    let CreditInfo = () => (<Credit accountBalance={this.state.accountBalance} addNewCredit={this.addNewCredit} creditsTotal={this.state.creditsTotal} credits={this.state.credits} />)
+    const DebitComponent = () => (<Debits balance = {this.state.accountBalance} addDebits = {this.addNewDebit} debits={this.state.debits} debitsTotal = {this.state.debitsTotal} creditsTotal={this.state.creditsTotal}></Debits>);
+    let CreditInfo = () => (<Credit accountBalance={this.state.accountBalance} addNewCredit={this.addNewCredit} debitsTotal = {this.state.debitsTotal} creditsTotal={this.state.creditsTotal} credits={this.state.credits} />)
                             
     return (<div id = "App">
-            <Router basename = "ReactRouter">
+            <HashRouter>
                 <Switch>
                   <Route exact path = "/" render={LogInComponent}/>
                   <Route exact path = "/home" render={HomeComponent}/>
@@ -156,7 +168,7 @@ class App extends Component{
                   <Route exact path = '/debits' render = {DebitComponent}/>
                   <Route exact path="/credits" render={CreditInfo} />
                 </Switch>
-            </Router>
+            </HashRouter>
       </div>
     );
   }

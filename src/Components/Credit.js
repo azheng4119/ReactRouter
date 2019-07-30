@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Card from "./Card";
 import CreditInput from './CreditInput'
 import {Link} from 'react-router-dom'
-import { regExpLiteral } from '@babel/types';
 
 class Credit extends Component {
     constructor(props) {
@@ -20,8 +19,8 @@ class Credit extends Component {
         return(
             <div>
                 <h1>Credit</h1>
-                <h2>Account Balance: {this.props.accountBalance}</h2>
-                <h2>Total Credits: {this.props.creditsTotal}</h2>
+                <h2>Account Balance: {(this.props.creditsTotal-this.props.debitsTotal).toFixed(2)}</h2>
+                <h2>Total Credits: {this.props.creditsTotal.toFixed(2)}</h2>
                 <div style={this.state.card_div_style}>
                     {
                         this.props.credits.map(function(entry) {
