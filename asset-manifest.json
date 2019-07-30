@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.37e40633.chunk.css",
-    "main.js": "/static/js/main.9ca65d9b.chunk.js",
-    "main.js.map": "/static/js/main.9ca65d9b.chunk.js.map",
-    "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
-    "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
-    "static/js/2.6212c7b0.chunk.js": "/static/js/2.6212c7b0.chunk.js",
-    "static/js/2.6212c7b0.chunk.js.map": "/static/js/2.6212c7b0.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.485e1b8cc9350ebc9d63c87607528c30.js": "/precache-manifest.485e1b8cc9350ebc9d63c87607528c30.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.37e40633.chunk.css.map": "/static/css/main.37e40633.chunk.css.map"
+    "main.css": "/reactrouter/static/css/main.37e40633.chunk.css",
+    "main.js": "/reactrouter/static/js/main.5578d442.chunk.js",
+    "main.js.map": "/reactrouter/static/js/main.5578d442.chunk.js.map",
+    "runtime~main.js": "/reactrouter/static/js/runtime~main.0fa15701.js",
+    "runtime~main.js.map": "/reactrouter/static/js/runtime~main.0fa15701.js.map",
+    "static/js/2.6212c7b0.chunk.js": "/reactrouter/static/js/2.6212c7b0.chunk.js",
+    "static/js/2.6212c7b0.chunk.js.map": "/reactrouter/static/js/2.6212c7b0.chunk.js.map",
+    "index.html": "/reactrouter/index.html",
+    "precache-manifest.d7a3f5ed046f0a22742268f5eeb612d8.js": "/reactrouter/precache-manifest.d7a3f5ed046f0a22742268f5eeb612d8.js",
+    "service-worker.js": "/reactrouter/service-worker.js",
+    "static/css/main.37e40633.chunk.css.map": "/reactrouter/static/css/main.37e40633.chunk.css.map"
   }
 }
