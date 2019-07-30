@@ -4,6 +4,7 @@ import Home from './Components/Home';
 import UserProfile from './Components/UserProfile';
 import Login from './Components/Login'
 import Credit from './Components/Credit'
+import { BrowserRouter } from 'react-router-dom';
 import axios from 'axios'
 import './App.css';
 import Debits from './Components/Debits';
