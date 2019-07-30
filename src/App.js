@@ -55,16 +55,21 @@ class App extends Component{
   }
 
   addNewDebit = (name,amounts) => {
-    let joined = this.state.debits.concat([{
-      description : name,
-      amount: amounts,
-      date : Date.now()
-    }]);
-    let newTotal = this.state.debitsTotal + parseInt(amounts);
-    this.setState({
-      debits: joined,
-      debitsTotal: newTotal
-    });
+    if (Number(amounts) <= 0) {
+      alert("You must enter a valid amount!")
+    }else{
+      let date_ = new Date();
+      let joined = this.state.debits.concat([{
+        description : name,
+        amount: amounts,
+        date: date_.toJSON().toString()
+      }]);
+      let newTotal = this.state.debitsTotal + parseInt(amounts);
+      this.setState({
+        debits: joined,
+        debitsTotal: newTotal
+      });
+   }
   }
 
   getCredits = () => {
@@ -124,7 +129,7 @@ class App extends Component{
 
   render(){
 
-    const HomeComponent = () => (<Home accountBalance={this.state.accountBalance} debits={this.state.debitsTotal}/>);
+    const HomeComponent = () => (<Home accountBalance={this.state.accountBalance} debits={this.state.debitsTotal} credits ={this.state.creditsTotal}/>);
     const UserProfileComponent = () => (<UserProfile userName={this.state.currentUser.userName} memberSince={this.state.currentUser.memberSince}/>);
     const LogInComponent = () => (<Login user={this.state.currentUser} mockLogIn={this.mockLogIn} {...this.props}/>);
     const DebitComponent = () => (<Debits addDebits = {this.addNewDebit} debits={this.state.debits} debitsTotal = {this.state.debitsTotal}></Debits>);
