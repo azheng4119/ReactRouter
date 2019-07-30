@@ -30,11 +30,11 @@ class DebitInput extends React.Component{
             <br></br>
         <form onSubmit={this.handleSubmit}>
           <div>
-            <label>Debit Name</label>
+            <label>Debit Name</label><br></br>
             <input type="text" onChange={this.handleChange} />
           </div>
           <div>
-            <label >Amount</label>
+            <label >Amount</label><br></br>
             <input type = "number" onChange = {this.handleChange2}/>
           </div>
           <button>Add Debit</button>

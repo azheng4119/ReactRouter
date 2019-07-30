@@ -38,11 +38,11 @@ class Login extends Component {
         <h1>Login Page</h1>
         <form onSubmit={this.handleSubmit}>
           <div>
-            <label htmlFor="userName">User Name</label>
+            <label htmlFor="userName">User Name</label><br></br>
             <input type="text" name="userName" onChange={this.handleChange} value={this.state.user.userName} />
           </div>
           <div>
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">Password</label><br></br>
             <input type="password" name="password" />
           </div>
           <button>Log In</button>
