@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/azheng4119/ReactRouter/static/css/main.37e40633.chunk.css",
-    "main.js": "/azheng4119/ReactRouter/static/js/main.36f86462.chunk.js",
-    "main.js.map": "/azheng4119/ReactRouter/static/js/main.36f86462.chunk.js.map",
-    "runtime~main.js": "/azheng4119/ReactRouter/static/js/runtime~main.61b106bd.js",
-    "runtime~main.js.map": "/azheng4119/ReactRouter/static/js/runtime~main.61b106bd.js.map",
-    "static/js/2.6212c7b0.chunk.js": "/azheng4119/ReactRouter/static/js/2.6212c7b0.chunk.js",
-    "static/js/2.6212c7b0.chunk.js.map": "/azheng4119/ReactRouter/static/js/2.6212c7b0.chunk.js.map",
-    "index.html": "/azheng4119/ReactRouter/index.html",
-    "precache-manifest.34e1952ecd0d193e180b6d0244b80d08.js": "/azheng4119/ReactRouter/precache-manifest.34e1952ecd0d193e180b6d0244b80d08.js",
-    "service-worker.js": "/azheng4119/ReactRouter/service-worker.js",
-    "static/css/main.37e40633.chunk.css.map": "/azheng4119/ReactRouter/static/css/main.37e40633.chunk.css.map"
+    "main.css": "/reactrouter/static/css/main.37e40633.chunk.css",
+    "main.js": "/reactrouter/static/js/main.5578d442.chunk.js",
+    "main.js.map": "/reactrouter/static/js/main.5578d442.chunk.js.map",
+    "runtime~main.js": "/reactrouter/static/js/runtime~main.0fa15701.js",
+    "runtime~main.js.map": "/reactrouter/static/js/runtime~main.0fa15701.js.map",
+    "static/js/2.6212c7b0.chunk.js": "/reactrouter/static/js/2.6212c7b0.chunk.js",
+    "static/js/2.6212c7b0.chunk.js.map": "/reactrouter/static/js/2.6212c7b0.chunk.js.map",
+    "index.html": "/reactrouter/index.html",
+    "precache-manifest.d7a3f5ed046f0a22742268f5eeb612d8.js": "/reactrouter/precache-manifest.d7a3f5ed046f0a22742268f5eeb612d8.js",
+    "service-worker.js": "/reactrouter/service-worker.js",
+    "static/css/main.37e40633.chunk.css.map": "/reactrouter/static/css/main.37e40633.chunk.css.map"
   }
 }
