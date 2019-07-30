@@ -7,9 +7,10 @@ class Home extends Component{
         return <div>
             <Link to="/userProfile">User Profile</Link><br></br>
             <Link to="/">Login</Link><br></br>
-            <Link to="/debits">Debits</Link>
+            <Link to="/debits">Debits</Link><br></br>
+            <Link to="/credits">Credits</Link>
             <h1>Home page</h1>
-            <AccountBalance accountBalance={this.props.accountBalance} debits = {this.props.debits}/>
+            <AccountBalance accountBalance={this.props.accountBalance} debits = {this.props.debits} credits={this.props.credits}/>
         </div>
     }
 }
