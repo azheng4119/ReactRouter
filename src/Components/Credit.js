@@ -1,98 +1,38 @@
 import React, { Component } from 'react'
-//import {Link} from 'react-router-dom'
-//import { regExpLiteral } from '@babel/types';
+import Card from "./Card";
+import CreditInput from './CreditInput'
+import {Link} from 'react-router-dom'
+import { regExpLiteral } from '@babel/types';
 
 class Credit extends Component {
     constructor(props) {
         super(props)
-
         this.state = {
-            credit_transactions: [],
-            new_transaction_amt: 0,
-            new_transaction_item: '',
-            main_div: {
+            card_div_style: {
                 display: "flex",
-                flexDirection: "row",
-                flexWrap: "wrap",
-                justifyContent: "space-around"
-            },
-            entry_div: {
-                width: "22%",
-                borderStyle: "solid",
-                marginTop: "30px"
+                justifyContent: "space-evenly",
+                flexWrap: "wrap"
             }
         }
-
-        this.addNewEntry = this.addNewEntry.bind(this)
-    }
-
-    componentDidMount() {
-        fetch("https://moj-api.herokuapp.com/credits")
-        .then(res => res.json())
-        .then(data => this.setState({
-            credit_transactions: data
-        }))
-        .then(() => {
-            console.log(this.state.credit_transactions)
-        })
-    }
-
-    onChangeAmount = event => {
-        let value = event.target.value
-        this.setState({
-            new_transaction_amt: Number(value)
-        })
-    }
-
-    onChangeItem = event => {
-        let value = event.target.value
-        this.setState({
-            new_transaction_item: value
-        })
-    }
-
-    addNewEntry(event) {
-        event.preventDefault()
-        let component = this
-        let date = new Date()
-        let date_string = date.toJSON().toString()
-        let new_entry = {
-            amount: component.state.new_transaction_amt,
-            date: date_string,
-            description: component.state.new_transaction_item,
-            id: component.state.credit_transactions.length
-        }
-        this.setState(prevState => {
-            return(
-                prevState.credit_transactions[prevState.credit_transactions.length] = new_entry
-            )
-        })
     }
 
     render() {
-        let component = this
-        return (
+        return(
             <div>
-                <div style={this.state.main_div}>
-                    {this.state.credit_transactions.map(function(item) {
-                        return (
-                            <div style={component.state.entry_div}>
-                                <h3>${item.amount.toFixed(2)}</h3>
-                                <h3>{item.description}</h3>
-                                <h3>{item.date}</h3>
-                            </div>
-                        )
-                    })}
+                <h1>Credit</h1>
+                <h2>Account Balance: {this.props.accountBalance}</h2>
+                <h2>Total Credits: {this.props.creditsTotal}</h2>
+                <div style={this.state.card_div_style}>
+                    {
+                        this.props.credits.map(function(entry) {
+                            console.log(entry.name)
+                            return <Card name={entry.description} amount={entry.amount} date={entry.date}></Card>
+                        })
+                    }
                 </div>
-
-                <div>
-                    <h2>Enter new purchase</h2>
-                    <form>
-                        <input type="number" name="cred_charge" placeholder="Enter an amount here" onChange={this.onChangeAmount} />
-                        <input type="text" name="cred_item" placeholder="Enter what you purchased" onChange={this.onChangeItem} />
-                        <button onClick={this.addNewEntry}>Submit</button>
-                    </form>
-                </div>
+                <CreditInput addNewCredit={this.props.addNewCredit} id={this.props.credits.length} />
+                <br></br>
+                <Link to="/home">Home</Link>
             </div>
         )
     }

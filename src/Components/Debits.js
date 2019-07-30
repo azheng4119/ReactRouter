@@ -11,12 +11,14 @@ class Debits extends Component{
             <Card name = {i.description} amount = {i.amount} date = {i.date}></Card>
             );
         }
-        return <div>
+        return (
+            <div>
                 <Link to="/home">Home</Link><br></br>
                 <DebitInput addDebits = {this.props.addDebits}></DebitInput>
                 <span><strong>Total Debits : {this.props.debitsTotal}</strong></span>
                 <div id = "cards">{debits}</div>
-        </div>
+            </div>
+        )
     }
 }
 
